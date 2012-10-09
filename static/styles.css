@@ -114,6 +114,7 @@ dl.menu.left.hidden {
   position: absolute;
   bottom: 105px;
   background-size: 100% 100%;
+  cursor: pointer;
 }
 
 .birds#birds_0 {

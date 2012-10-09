@@ -10,6 +10,11 @@ Game = function() {
   this.x2 = 0;
   this.y2 = 0;
   this.level = 0;
+  this.finished = false;
+
+  this.finishGame = function() {
+    this.finished = true;
+  }
 
   this.angle = function() {
     var m = (this.y2 - this.y1) / (this.x2 - this.x1);
