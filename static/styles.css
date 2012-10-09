@@ -1,0 +1,140 @@
+html, body {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-size: 40px;
+  overflow: hidden;
+  background: url('/images/background.jpg') fixed bottom center;
+  background-size: 100% auto;
+  -webkit-user-select: none;
+  font-family: 'Finger Paint';
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-family: 'Finger Paint';
+  margin: 0;
+  width: 100%;
+  text-align: center;
+  color: #279a3a;
+  text-shadow: 0 0 6px #104018, 0 0 6px #104018, 0 0 6px #104018, 0 0 6px #104018;
+}
+
+dl.menu {
+  display: block;
+  width: 70%;
+  position: absolute;
+  top: 140px;
+  left: 13%;
+  font-family: 'Ubuntu';
+  background: rgba(27, 105, 40, 0.7);
+  font-size: 32px;
+  border: solid 10px rgba(27, 105, 40, 0.8);
+  box-shadow: inset 0 0 30px rgba(27, 105, 40, 0.9);
+  border-radius: 4px;
+  padding: 1%;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+dl.menu dt {
+  color: #0e3815;
+  font-size: 38px;
+  text-align: center;
+}
+
+dl.menu .options {
+  margin: 0;
+}
+
+dl.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+dl.menu ul.gallery {
+  overflow: hidden;
+}
+
+dl.menu ul.gallery li {
+  width: 33%;
+  float: left;
+}
+
+dl.menu ul.gallery li img {
+  vertical-align: middle;
+}
+
+dl.menu a {
+  color: #0c3012;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+dl.menu a.button.wide {
+  display: block;
+  text-align: center;
+}
+
+dl.menu ul li a {
+  display: block;
+}
+
+dl.menu a:hover {
+  background: rgba(27, 105, 40, 0.5);
+  box-shadow: inset 0 0 30px rgba(27, 105, 40, 0.9);
+}
+
+dl.menu.down {
+  top: 120px;
+}
+
+dl.menu.left {
+  left: 13%;
+}
+
+dl.menu.down.hidden {
+  top: -600px;
+}
+
+dl.menu.left.hidden {
+  left: -80%;
+}
+
+.birds,
+.pigs {
+  display: block;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  bottom: 105px;
+  background-size: 100% 100%;
+}
+
+.birds#birds_0 {
+  left: 90px;
+}
+.birds#birds_1 {
+  left: 150px;
+}
+.birds#birds_2 {
+  left: 210px;
+}
+
+.pigs#pigs_0 {
+  right: 90px;
+  background: url('/images/pig_1.png') no-repeat center center;
+}
+.pigs#pigs_1 {
+  right: 150px;
+  background: url('/images/pig_2.png') no-repeat center center;
+}
+.pigs#pigs_2 {
+  right: 210px;
+  background: url('/images/pig_3.png') no-repeat center center;
+}
