@@ -41,6 +41,7 @@ Game = function() {
       this.winner = this.first_team;
 
     if(this.winner){
+      this.finishGame();
       $('body').append("<h1 id=\"winner\">" + this.winner + " won!" + "</h1>");
       $('#winner').delay(200).animate({
         opacity: 0.9,
