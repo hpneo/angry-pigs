@@ -43,8 +43,10 @@ Game.init_events = function(game) {
               new_x = (current_x + move_forward);
             break;
           }
-          if(new_x >= 0 && new_x <= 270)
+          if(new_x >= 0 && new_x <= 270) {
+            game.current_item.x = new_x;
             current_item_el.css(x, new_x + 'px');
+          }
         }
       }
     });

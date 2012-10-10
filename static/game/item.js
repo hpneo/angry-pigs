@@ -1,6 +1,7 @@
 Item = function(player, index) {
   this.player = player;
   this.index = index;
+  this.destroyed = false;
   this.id = this.player.team + "_" + this.index;
   this.gravity = 9.81;
   this.t = 0;
@@ -78,6 +79,9 @@ Item = function(player, index) {
         easing: 'easeInBack',
         duration: 600,
         complete: function() {
+          self.destroyed = true;
+          self.y = destination_bottom;
+
           if(self.player.team == self.player.game.first_team)
             self.player.game.items_destroyed[0] += 1;
           else if(self.player.team == self.player.game.first_team)
@@ -102,6 +106,13 @@ Item = function(player, index) {
           item.find_collisions();
           window.setTimeout(function(){
             item.destroy();
+
+            window.setTimeout(function(){
+              var player = game.next_player();
+              if(player.team == game.second_team) {
+                player.prepareItem().fly();
+              }
+            }, 1200);
           }, 800);
         }
       }

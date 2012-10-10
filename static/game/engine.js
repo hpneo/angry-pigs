@@ -51,5 +51,9 @@ Game = function() {
     }
   }
 
+  this.randomValue = function(from, to) {
+    return Math.floor(Math.random()*(to-from+1)+from);
+  }
+
   Game.init_events(this);
 };
