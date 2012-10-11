@@ -44,7 +44,7 @@ Item = function(player, index) {
 
   this.find_collisions = function() {
     var team_index;
-    if(this.player.team == game.first_team)
+    if(this.player.team == this.player.game.first_team)
       team_index = 1;
     else
       team_index = 0;
@@ -64,10 +64,10 @@ Item = function(player, index) {
     return $('#' + this.id).hittest('#' + item.id);
   };
 
-  this.destroy = function() {
+  this.destroy = function(callback) {
     var id = this.id;
-    var self = this;
-    window.setTimeout(function(){
+
+    window.setTimeout(function(item){
       var element = $('#' + id);
       var original_bottom = parseFloat(element.css('bottom'));
       var destination_bottom = original_bottom + 800;
@@ -79,18 +79,17 @@ Item = function(player, index) {
         easing: 'easeInBack',
         duration: 600,
         complete: function() {
-          self.destroyed = true;
-          self.y = destination_bottom;
+          item.destroyed = true;
+          item.y = destination_bottom;
 
-          if(self.player.team == self.player.game.first_team)
-            self.player.game.items_destroyed[0] += 1;
-          else if(self.player.team == self.player.game.first_team)
-            self.player.game.items_destroyed[1] += 1;
+          item.player.game.updateScores(item);
 
-          self.player.game.checkForWinner();
+          item.player.game.checkForWinner();
+          if(callback)
+            callback();
         }
       });
-    }, 10);
+    }, 610, this);
   };
 
   this.fly = function() {
@@ -103,23 +102,28 @@ Item = function(player, index) {
         if(parseInt(item.y) <= 105) {
           item.y = 105;
           window.clearInterval(interval);
+          
           item.find_collisions();
-          window.setTimeout(function(){
-            item.destroy();
-
-            window.setTimeout(function(){
-              var player = game.next_player();
-              if(player.team == game.second_team) {
-                player.prepareItem().fly();
-              }
-            }, 1200);
-          }, 800);
+          
+          item.destroy(function(){
+            if(!game.finished) {
+              window.setTimeout(function(){
+                var player = game.next_player();
+                
+                if(game.level > 0 && player.team == game.second_team) {
+                  var item = player.prepareItem();
+                  if(item)
+                    item.fly();
+                }
+              }, 1200);
+            }
+          });
         }
       }
 
       var css_x = '';
 
-      if(item.player.team == game.first_team)
+      if(item.player.team == item.player.game.first_team)
         css_x = 'left';
       else
         css_x = 'right';

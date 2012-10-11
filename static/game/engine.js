@@ -16,6 +16,35 @@ Game = function() {
     this.finished = true;
   }
 
+  this.initGame = function() {
+    for(var i = 0; i < this.players.length; i++) {
+      for(var j = 0; j < this.players[i].items.length; j++) {
+        $("#" + this.players[i].items[j].id).css({
+          bottom : '105px',
+          opacity : 1
+        });
+      }
+    }
+  }
+
+  this.updateScores = function(item) {
+    var team_index;
+    if(item.player.team == this.first_team)
+      team_index = 0;
+    else if(item.player.team == this.second_team)
+      team_index = 1;
+    
+    this.items_destroyed[team_index] += 1;
+
+    if(team_index == 0)
+      counter = $(".player_info:eq(1) .count");
+    else if(team_index == 1)
+      counter = $(".player_info:eq(0) .count");
+
+    if(!this.finished)
+      counter.text(this.items_destroyed[team_index]);
+  }
+
   this.angle = function() {
     var m = (this.y2 - this.y1) / (this.x2 - this.x1);
 
@@ -42,12 +71,12 @@ Game = function() {
 
     if(this.winner){
       this.finishGame();
-      $('body').append("<h1 id=\"winner\">" + this.winner + " won!" + "</h1>");
-      $('#winner').delay(200).animate({
+      $('body').append("<h1 id=\"winner\">" + this.winner + " won!</h1>");
+      $('#winner').delay(100).animate({
         opacity: 0.9,
-        top: 40,
-        easing: 'easeOutElastic'
-      }, 800);
+        top: 160,
+        easing: 'easeInOutElastic'
+      }, 600);
     }
   }
 

@@ -11,8 +11,10 @@ Player = function(game, team) {
 
   this.prepareItem = function() {
 
-    var angle = this.game.randomValue(24, 32);
-    var v0 = this.game.randomValue(270, 290);
+    if(this.game.level == 1) {
+      var angle = this.game.randomValue(24, 32);
+      var v0 = this.game.randomValue(270, 280);
+    }
 
     //angle + v0 == 300
 

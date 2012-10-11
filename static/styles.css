@@ -11,6 +11,10 @@ html, body {
   font-family: 'Finger Paint';
 }
 
+* {
+  cursor: default;
+}
+
 a {
   text-decoration: none;
 }
@@ -138,4 +142,40 @@ dl.menu.left.hidden {
 .pigs#pigs_2 {
   right: 210px;
   background: url('/images/pig_3.png') no-repeat center center;
+}
+
+#winner {
+  position: absolute;
+  opacity: 0.1;
+  top: -200px;
+}
+
+.player_info {
+  position: absolute;
+  top: 10px;
+  width: 10%;
+  overflow: hidden;
+  text-align: center;
+}
+
+.player_info.left {
+  left: 10px;
+}
+
+.player_info.right {
+  right: 10px;
+}
+
+.player_info h3 {
+  margin: 0;
+  font-size: 32px;
+  color: #db8e5b;
+  text-shadow: 0 0 3px #b55e25, 0 0 3px #b55e25, 0 0 3px #b55e25, 0 0 3px #b55e25;
+}
+
+.player_info .count {
+  display: block;
+  font-size: 28px;
+  color: #279a3a;
+  text-shadow: 0 0 3px #104018, 0 0 3px #104018, 0 0 3px #104018, 0 0 3px #104018;
 }
