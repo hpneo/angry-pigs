@@ -7,15 +7,17 @@ Item = function(player, index) {
   this.t = 0;
   this.angle = 0;
   this.v0 = 0;
-  this.x = 90 * (this.index) + 50;
-  this.y = 105;
+  this.x0 = 90 * (this.index) + 50;
+  this.x = this.x0;
+  this.y0 = 105;
+  this.y = this.y0;
 
   this.rad = function(degrees) {
     return (degrees / 180) * Math.PI;
   };
 
   this.time = function() {
-    return (this.t / 1000) * 3.5;
+    return (this.t / 140) * 3.5;
   };
 
   this.ratio = function() {
@@ -35,11 +37,11 @@ Item = function(player, index) {
   };
 
   this.position_x = function() {
-    return this.x + (this.vx() * this.time()) - 1.85;
+    return this.x0 + (this.vx() * this.time() * 2.1);
   };
 
   this.position_y = function() {
-    return this.y + (this.vy() * this.time()) - (this.gravity * Math.pow(this.time(), 2) * 0.5) * this.ratio();
+    return this.y0 + (this.vy() * this.time()) - (this.gravity * Math.pow(this.time(), 2) * 0.5) * 7.8;
   };
 
   this.find_collisions = function() {
@@ -95,8 +97,8 @@ Item = function(player, index) {
   this.fly = function() {
     var item_in_dom = $('#' + this.id);
     var interval = window.setInterval(function(item) {
-      item.x = item.position_x(item.x);
-      item.y = item.position_y(item.y);
+      item.x = item.position_x();
+      item.y = item.position_y();
 
       if(item.t > 2) {
         if(parseInt(item.y) <= 105) {
