@@ -20,14 +20,10 @@ Item = function(player, index) {
     return (this.t / 140) * 3.5;
   };
 
-  this.ratio = function() {
-    return 200 + (1.1 * Math.abs(this.angle - 45));
-  };
-
   this.vx = function() {
     var radians = this.rad(this.angle);
 
-    return this.v0 * Math.cos(radians) - 3.5;
+    return this.v0 * Math.cos(radians);
   };
 
   this.vy = function() {

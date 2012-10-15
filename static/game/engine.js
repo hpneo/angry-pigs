@@ -11,6 +11,68 @@ Game = function() {
   this.y2 = 0;
   this.level = 0;
   this.finished = false;
+  this.second_team_x = [50, 140, 230];
+  this.first_team_x = [1206, 1156, 1106];
+
+  this.f = function(first_team_index, second_team_index) {
+    return (this.first_team_x[first_team_index] - this.second_team_x[second_team_index]) / 0.0525;
+  }
+
+  this.g = function(first_team_index, second_team_index) {
+    var base_angle = 26;
+    var angles = [];
+    var ts = [];
+    var vs = [];
+
+    for(var i = 0; i < 6; i++) {
+      angles.push(base_angle + i);
+    }
+
+    for(var i = 0; i < angles.length; i++) {
+      ts[i] = [];
+      vs[i] = [];
+
+      for(var j = 0; j < 6; j++) {
+        ts[i][j] = this.randomValue(100, 140);
+        vs[i][j] = [];
+
+        for(var k = 0; k < 6; k++) {
+          vs[i][j][k] = this.randomValue(200, 230);
+        }
+      }
+    }
+
+    var x = [];
+
+    for(var i = 0; i < angles.length; i++) {
+      x[i] = [];
+
+      for(var j = 0; j < ts[i].length; j++) {
+        x[i][j] = [];
+
+        for(var k = 0; k < vs[i][j].length; k++) {
+          x[i][j][k] = Math.cos((angles[i] / 180) * Math.PI) * ts[i][j] * vs[i][j][k];
+        }
+      }
+    }
+
+    for(var i = 0; i < x.length; i++) {
+      for(var j = 0; j < x[i].length; j++) {
+        for(var k = 0; k < x[i][j].length; k++) {
+          var diff = Math.abs(this.f(first_team_index, second_team_index) - x[i][j][k]);
+          
+          if (diff < 20) {
+            console.log(angles[i]);
+            console.log(vs[i][j][k]);
+            console.log(ts[i][j]);
+            break;
+          }
+        }
+      }
+    }
+
+    return x;
+  }
 
   this.finishGame = function() {
     this.finished = true;
