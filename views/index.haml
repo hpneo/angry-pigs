@@ -53,3 +53,28 @@
         %a#level-1{:href => '#'} Medio
       %li
         %a#level-2{:href => '#'} Experto
+
+%dl.menu.left.hidden#about-menu
+  %dt Acerca de
+  %p Angry Pigs es un juego de disparos basado en Angry Birds. Consiste en un solo jugador contra la máquina, donde el ganador es el que logra destruir todos los miembros del equipo contrario.
+  %p Ambos jugadores pueden mover los miembros de su equipo a los lados, a un máximo de 3 posiciones con respecto a su posición.
+  %p Cada jugar tiene un equipo de 3 miembros. Se pueden elegir los miembros del equipo antes de empezar el juego y se pueden cambiar los miembros que quedan del equipo durante el juego.
+  %p
+    Existen tres niveles de dificultad:
+    = succeed "," do
+      %strong Principante
+    %strong Normal
+    y
+    = succeed "." do
+      %strong Experto
+  %a.button.wide.close{:href => '#'} Close
+
+%dl.menu.left.hidden#credits-menu
+  %dt Créditos
+  %p
+    Juego desarrollado por:
+    %ul
+      %li Gustavo Leon Rojas
+      %li Moises Regalado Espinoza
+      %li Bruno Sergio Cardenas
+  %a.button.wide.close{:href => '#'} Close

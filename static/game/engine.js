@@ -13,13 +13,31 @@ Game = function() {
   this.finished = false;
   this.second_team_x = [50, 140, 230];
   this.first_team_x = [1206, 1156, 1106];
+  this.strategy = new Strategy(this);
+
+  this.getStrategy = function(level, first_team_index, second_team_index) {
+    switch(level) {
+      case 0:
+        console.log('random');
+        return this.strategy.random(first_team_index, second_team_index);
+      break;
+      case 1:
+        console.log('minMax');
+        return this.strategy.minMax(first_team_index, second_team_index);
+      break;
+      case 2:
+        console.log('bestMove');
+        return this.strategy.bestMove(first_team_index, second_team_index);
+      break;
+    }
+  }
 
   this.f = function(first_team_index, second_team_index) {
     return (this.first_team_x[first_team_index] - this.second_team_x[second_team_index]) / 0.0525;
   }
 
   this.g = function(first_team_index, second_team_index) {
-    var base_angle = 26;
+    var base_angle = this.randomValue(24, 32);
     var angles = [];
     var ts = [];
     var vs = [];
@@ -52,21 +70,6 @@ Game = function() {
 
         for(var k = 0; k < vs[i][j].length; k++) {
           x[i][j][k] = Math.cos((angles[i] / 180) * Math.PI) * ts[i][j] * vs[i][j][k];
-        }
-      }
-    }
-
-    for(var i = 0; i < x.length; i++) {
-      for(var j = 0; j < x[i].length; j++) {
-        for(var k = 0; k < x[i][j].length; k++) {
-          var diff = Math.abs(this.f(first_team_index, second_team_index) - x[i][j][k]);
-          
-          if (diff < 20) {
-            console.log(angles[i]);
-            console.log(vs[i][j][k]);
-            console.log(ts[i][j]);
-            break;
-          }
         }
       }
     }

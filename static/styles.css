@@ -51,6 +51,11 @@ dl.menu dt {
   text-align: center;
 }
 
+dl.menu p {
+  font-size: 22px;
+  color: #061809;
+}
+
 dl.menu .options {
   margin: 0;
 }
@@ -117,7 +122,7 @@ dl.menu.left.hidden {
   height: 60px;
   position: absolute;
   bottom: 105px;
-  background-size: 100% 100%;
+  background-size: 100% 100% !important;
   cursor: pointer;
 }
 

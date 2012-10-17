@@ -108,7 +108,7 @@ Item = function(player, index) {
               window.setTimeout(function(){
                 var player = game.next_player();
                 
-                if(game.level > 0 && player.team == game.second_team) {
+                if(player.team == game.second_team) {
                   var item = player.prepareItem();
                   if(item)
                     item.fly();

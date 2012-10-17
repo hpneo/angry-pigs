@@ -3,25 +3,20 @@ Player = function(game, team) {
   this.team = team;
   this.items = [];
 
-  for(var i = 0; i<game.items_per_player; i++) {
+  for(var i = 0; i < this.game.items_per_player; i++) {
     this.items.push(new Item(this, i));
   }
 
   //angles: between 24 - 32
 
   this.prepareItem = function() {
-
-    if(this.game.level == 1) {
-      var angle = this.game.randomValue(24, 32);
-      var v0 = this.game.randomValue(270, 280);
-    }
-
-    //angle + v0 == 300
-
     for(var i = 0; i < this.items.length; i++) {
       if(!this.items[i].destroyed) {
-        this.items[i].angle = angle;
-        this.items[i].v0 = v0;
+        var strategy = this.game.getStrategy(this.game.level, this.game.randomValue(0, 2), i);
+
+        this.items[i].angle = strategy.angle;
+        this.items[i].v0 = strategy.v0;
+
         return this.items[i];
       }
     }

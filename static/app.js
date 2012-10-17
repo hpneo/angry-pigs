@@ -1,4 +1,4 @@
-function hide_menu(menu) {
+function hide_menu(menu, callback) {
   var css_attrs = {};
 
   if(menu.hasClass('down')) {
@@ -10,7 +10,11 @@ function hide_menu(menu) {
 
   menu.delay(200).animate(css_attrs, {
     duration : 1000,
-    easing : 'easeInOutElastic'
+    easing : 'easeInOutElastic',
+    complete: function() {
+      if(callback)
+        callback();
+    }
   });
 }
 
@@ -41,7 +45,13 @@ $(document).ready(function() {
   $(document).on('click', '.close', function(e){
     e.preventDefault();
 
-    hide_menu($(this).parent().parent());
+    var menu = $(this).parents('.menu');
+
+    hide_menu(menu, function() {
+      console.log(menu.id);
+      if(menu.attr('id') == 'credits-menu' || menu.attr('id') == 'about-menu')
+        show_menu($('#main-menu'));
+    });
   });
 
   $(document).on('click', '#choose-level-menu a', function(e){
