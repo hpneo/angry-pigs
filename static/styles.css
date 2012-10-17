@@ -5,7 +5,7 @@ html, body {
   margin: 0;
   font-size: 40px;
   overflow: hidden;
-  background: url('/images/background.jpg') fixed bottom center;
+  background: #c1e8ef url('/images/background.jpg') repeat-x fixed bottom center;
   background-size: 100% auto;
   -webkit-user-select: none;
   font-family: 'Finger Paint';
