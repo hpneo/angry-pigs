@@ -36,47 +36,6 @@ Game = function() {
     return (this.first_team_x[first_team_index] - this.second_team_x[second_team_index]) / 0.0525;
   }
 
-  this.g = function(first_team_index, second_team_index) {
-    var base_angle = this.randomValue(24, 32);
-    var angles = [];
-    var ts = [];
-    var vs = [];
-
-    for(var i = 0; i < 6; i++) {
-      angles.push(base_angle + i);
-    }
-
-    for(var i = 0; i < angles.length; i++) {
-      ts[i] = [];
-      vs[i] = [];
-
-      for(var j = 0; j < 6; j++) {
-        ts[i][j] = this.randomValue(100, 140);
-        vs[i][j] = [];
-
-        for(var k = 0; k < 6; k++) {
-          vs[i][j][k] = this.randomValue(200, 230);
-        }
-      }
-    }
-
-    var x = [];
-
-    for(var i = 0; i < angles.length; i++) {
-      x[i] = [];
-
-      for(var j = 0; j < ts[i].length; j++) {
-        x[i][j] = [];
-
-        for(var k = 0; k < vs[i][j].length; k++) {
-          x[i][j][k] = Math.cos((angles[i] / 180) * Math.PI) * ts[i][j] * vs[i][j][k];
-        }
-      }
-    }
-
-    return x;
-  }
-
   this.finishGame = function() {
     this.finished = true;
   }
@@ -142,6 +101,20 @@ Game = function() {
         top: 160,
         easing: 'easeInOutElastic'
       }, 600);
+      $.ajax({
+        url : "/create_rating",
+        type : "POST",
+        data : {
+          rating : {
+            player : 'Birds',
+            points : this.items_destroyed[1]
+          }
+        },
+        success : function(data) {
+          if(data)
+            console.log(data);
+        }
+      });
     }
   }
 

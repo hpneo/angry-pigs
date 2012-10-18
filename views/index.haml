@@ -54,6 +54,17 @@
       %li
         %a#level-2{:href => '#'} Experto
 
+%dl.menu.left.hidden#last-ratings-menu
+  %dt Últimas puntuaciones
+  %dd.options
+    %ul
+      - @last_ratings.each do |rating|
+        %li
+          = rating["player"]
+          \-
+          = rating["points"]
+          puntos
+
 %dl.menu.left.hidden#about-menu
   %dt Acerca de
   %p Angry Pigs es un juego de disparos basado en Angry Birds. Consiste en un solo jugador contra la máquina, donde el ganador es el que logra destruir todos los miembros del equipo contrario.
