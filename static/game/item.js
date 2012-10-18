@@ -50,11 +50,15 @@ Item = function(player, index) {
     var items = this.player.game.players[team_index].items;
     
     for(var i=0; i < items.length; i++) {
-      (function(current_item, item){
+      var result = (function(current_item, item){
         if(current_item.collides_with(item)){
           item.destroy();
+          return true;
         }
+        return false;
       })(this, items[i]);
+      if(result)
+        break;
     }
   };
 

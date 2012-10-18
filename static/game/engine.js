@@ -51,6 +51,16 @@ Game = function() {
     }
   }
 
+  this.teamToIndex = function(team) {
+    var team_index;
+    if(team == this.first_team)
+      team_index = 0;
+    else if(team == this.second_team)
+      team_index = 1;
+
+    return team_index;
+  }
+
   this.updateScores = function(item) {
     var team_index;
     if(item.player.team == this.first_team)
