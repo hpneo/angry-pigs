@@ -74,6 +74,7 @@ Item = function(player, index) {
     if (this.lives > 0) {
       this.lives -= 1;
     }
+    this.player.game.updateScores(this);
     this.player.game.updateLives(this);
   }
 
