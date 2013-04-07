@@ -4,10 +4,12 @@ Game.init_events = function(game) {
     var player_items_length = [game.players[0].items.length, game.players[1].items.length];
 
     for(var i=0; i < player_items_length[0]; i++) {
+      $('.player_info.left .lives').append(game.players[0].items[i].lives + ' ');
       $('.player.left').append('<div class="' + game.players[0].team + '" id="' + game.players[0].items[i].id + '"></div>');
     }
 
     for(var i=0; i < player_items_length[1]; i++) {
+      $('.player_info.right .lives').append(game.players[1].items[i].lives + ' ');
       $('.player.right').append('<div class="' + game.players[1].team + '" id="' + game.players[1].items[i].id + '"></div>');
     }
 

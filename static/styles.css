@@ -184,3 +184,10 @@ dl.menu.left.hidden {
   color: #279a3a;
   text-shadow: 0 0 3px #104018, 0 0 3px #104018, 0 0 3px #104018, 0 0 3px #104018;
 }
+
+.player_info .lives {
+  display: block;
+  font-size: 24px;
+  color: #db8e5b;
+  text-shadow: 0 0 3px #b55e25, 0 0 3px #b55e25, 0 0 3px #b55e25, 0 0 3px #b55e25;
+}

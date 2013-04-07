@@ -61,12 +61,16 @@ Game = function() {
     return team_index;
   }
 
+  this.updateLives = function(item) {
+    var team_index = this.teamToIndex(item.player.team);
+
+    counter = $(".player_info:eq(" + team_index + ") .lives");
+
+    counter.html(item.player.items.map(function(item) { return item.lives; }));
+  };
+
   this.updateScores = function(item) {
-    var team_index;
-    if(item.player.team == this.first_team)
-      team_index = 0;
-    else if(item.player.team == this.second_team)
-      team_index = 1;
+    var team_index = this.teamToIndex(item.player.team);
     
     this.items_destroyed[team_index] += 1;
 
