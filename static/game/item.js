@@ -11,6 +11,7 @@ Item = function(player, index) {
   this.x = this.x0;
   this.y0 = 105;
   this.y = this.y0;
+  this.lives = 3;
 
   this.rad = function(degrees) {
     return (degrees / 180) * Math.PI;
@@ -52,7 +53,10 @@ Item = function(player, index) {
     for(var i=0; i < items.length; i++) {
       var result = (function(current_item, item){
         if(current_item.collides_with(item)){
-          item.destroy();
+          item.decreaseLives();
+          if (item.lives == 0) {
+            item.destroy();
+          }
           return true;
         }
         return false;
@@ -65,6 +69,12 @@ Item = function(player, index) {
   this.collides_with = function(item) {
     return $('#' + this.id).hittest('#' + item.id);
   };
+
+  this.decreaseLives = function() {
+    if (this.lives > 0) {
+      this.lives -= 1;
+    }
+  }
 
   this.destroy = function(callback) {
     var id = this.id;

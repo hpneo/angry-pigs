@@ -1,6 +1,6 @@
 html, body {
   display: block;
-  width: 100%;
+  width: 1366px;
   height: 100%;
   margin: 0;
   font-size: 40px;
@@ -22,7 +22,7 @@ a {
 h1, h1 a {
   font-family: 'Finger Paint';
   margin: 0;
-  width: 100%;
+  width: 1366px;
   text-align: center;
   color: #279a3a;
   text-shadow: 0 0 6px #104018, 0 0 6px #104018, 0 0 6px #104018, 0 0 6px #104018;

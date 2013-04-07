@@ -11,6 +11,8 @@ Game.init_events = function(game) {
       $('.player.right').append('<div class="' + game.players[1].team + '" id="' + game.players[1].items[i].id + '"></div>');
     }
 
+    game.first_team_x = $('.pigs').map(function(index, item){ return $(item).position().left; }).toArray();
+
     $(document).on('dragstart', 'body', function(e){
       e.preventDefault();
     });
