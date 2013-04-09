@@ -48,7 +48,7 @@ Game.init_events = function(game) {
             break;
           }
           if(new_x >= 0 && new_x <= 270) {
-            game.current_item.x = new_x;
+            game.current_item.x = game.current_item.x0 = new_x;
             current_item_el.css(x, new_x + 'px');
           }
         }
